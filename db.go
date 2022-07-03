@@ -38,6 +38,7 @@ func injectClient[T any](client *Client[T], creator func(db *gorm.DB) T, config 
 		return nil, err
 	}
 	client.StartTransactionFunc = impl.StartTransaction
+	client.DAOFunc = impl.DAO
 	return client, nil
 }
 
